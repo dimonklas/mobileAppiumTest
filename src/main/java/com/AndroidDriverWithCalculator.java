@@ -22,9 +22,9 @@ public class AndroidDriverWithCalculator implements WebDriverProvider {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.0");
 //        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Google Nexus 5X");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus S");
-        capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
-//        capabilities.setCapability("appPackage", "com.android.calculator2");
-//        capabilities.setCapability("appActivity", ".Calculator");
+//        capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+        capabilities.setCapability("appPackage", "com.android.calculator2");
+        capabilities.setCapability("appActivity", ".Calculator");
 
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator1");
 

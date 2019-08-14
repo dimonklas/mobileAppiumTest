@@ -1,24 +1,15 @@
 package tests;
 
-import com.AndroidDriverWithCalculator;
-import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.CalculatorPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
-public class MobileAppTest {
+public class MobileAppTest extends BaseClass {
 
-    @BeforeTest
-    public void setUp() {
-        Configuration.startMaximized = false;
-        Configuration.browserSize = null;
-        Configuration.browser = AndroidDriverWithCalculator.class.getName();
-        open();
-    }
+    private CalculatorPage calculatorPage = new CalculatorPage();
 
     @Test
     public void testMethod() {
@@ -28,5 +19,14 @@ public class MobileAppTest {
         $(By.id("eq")).click();
         $(By.id("result")).shouldHave(text("6"));
         System.out.println("Да, бля!");
+    }
+
+    @Test
+    public void testMethod2() {
+        calculatorPage.pressButton("2").
+                pressPlus().
+                pressButton("4").
+                pressEquals().
+                checkResult("6");
     }
 }
