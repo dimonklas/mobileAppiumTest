@@ -1,14 +1,13 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.CalculatorPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
 
 public class MobileAppTest extends BaseClass {
 
@@ -38,7 +37,7 @@ public class MobileAppTest extends BaseClass {
         try {
             $(By.id("button")).waitUntil(visible, 10000);
             $(By.id("button")).click();
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             System.out.println("Опа, пиздец!");
         }
         $(By.id("tour_page_switcher")).shouldBe(visible).click();
@@ -55,9 +54,28 @@ public class MobileAppTest extends BaseClass {
 
     @Test
     public void setValues() {
+//        $(By.id("progressBar")).waitUntil(not(visible), 30* 1000);
+//        $(By.id("progressBar")).shouldNotBe(visible);
         $(By.id("places_toolbar")).shouldBe(visible).click();
-        $(By.id("dynamic_item_container")).shouldBe(visible).click();
-        $(By.id("dynamic_item_container")).shouldBe(visible).sendKeys("Русский текст");
-        $(By.id("dynamic_item_container")).shouldBe(visible).setValue("bla-text2");
+        $(By.id("dynamic_item_container")).shouldBe(visible).val("Кафе");
+        $$(By.id("dynamic_item_container")).get(1).shouldBe(visible).click();
+        $(By.id("name_filter")).val("Днепр");
+        $(By.id("item_name")).shouldHave(text("Днепр"));
+        $(By.id("item_name")).click();
+        $(By.linkText("Вся Украина")).shouldBe(visible).click();
+
+        $(By.className("android.widget.Button")).shouldBe(visible).click();
+        $x("//android.widget.Button[contains(@text,'Показать')]").shouldBe(visible).click();
+        $x("//android.widget.Button").shouldBe(visible);
+        $x("//android.widget.Button").click();
+//        $(By.id("apply_meta_filters_button")).click();
+    }
+
+
+    @Test
+    public void scrollTo() {
+        $(byText("Тайны Сколевских Бескидов: хребет горы Ключ")).scrollTo();
+        $(byText("Тайны Сколевских Бескидов: хребет горы Ключ")).shouldBe(visible);
+        $(byText("Тайны Сколевских Бескидов: хребет горы Ключ")).click();
     }
 }

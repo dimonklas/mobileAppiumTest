@@ -13,7 +13,7 @@
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>5.2.5</version>
+            <version>5.2.8</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
