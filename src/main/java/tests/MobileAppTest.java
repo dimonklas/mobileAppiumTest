@@ -1,5 +1,6 @@
 package tests;
 
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.CalculatorPage;
@@ -62,12 +63,11 @@ public class MobileAppTest extends BaseClass {
         $(By.id("name_filter")).val("Днепр");
         $(By.id("item_name")).shouldHave(text("Днепр"));
         $(By.id("item_name")).click();
-        $(By.linkText("Вся Украина")).shouldBe(visible).click();
 
         $(By.className("android.widget.Button")).shouldBe(visible).click();
         $x("//android.widget.Button[contains(@text,'Показать')]").shouldBe(visible).click();
-        $x("//android.widget.Button").shouldBe(visible);
-        $x("//android.widget.Button").click();
+//        $x("//android.widget.Button").shouldBe(visible);
+//        $x("//android.widget.Button").click();
 //        $(By.id("apply_meta_filters_button")).click();
     }
 
@@ -77,5 +77,13 @@ public class MobileAppTest extends BaseClass {
         $(byText("Тайны Сколевских Бескидов: хребет горы Ключ")).scrollTo();
         $(byText("Тайны Сколевских Бескидов: хребет горы Ключ")).shouldBe(visible);
         $(byText("Тайны Сколевских Бескидов: хребет горы Ключ")).click();
+    }
+
+    @Test
+    public void startAppium() {
+        AppiumDriverLocalService service = AppiumDriverLocalService.buildDefaultService();
+        service.start();
+        System.out.println("Мы тут");
+        service.stop();
     }
 }
