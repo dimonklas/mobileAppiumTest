@@ -1,13 +1,11 @@
 package tests;
 
-import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.CalculatorPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MobileAppTest extends BaseClass {
@@ -49,7 +47,7 @@ public class MobileAppTest extends BaseClass {
         $(By.id("button")).click();
         $(By.id("places")).waitUntil(visible, 15000);
         $(By.id("places")).click();
-        sleep(500);
+        back();
     }
 
 
@@ -73,17 +71,7 @@ public class MobileAppTest extends BaseClass {
 
 
     @Test
-    public void scrollTo() {
-        $(byText("Тайны Сколевских Бескидов: хребет горы Ключ")).scrollTo();
-        $(byText("Тайны Сколевских Бескидов: хребет горы Ключ")).shouldBe(visible);
-        $(byText("Тайны Сколевских Бескидов: хребет горы Ключ")).click();
-    }
-
-    @Test
-    public void startAppium() {
-        AppiumDriverLocalService service = AppiumDriverLocalService.buildDefaultService();
-        service.start();
-        System.out.println("Мы тут");
-        service.stop();
+    public void howTime() {
+        sleep(1);
     }
 }

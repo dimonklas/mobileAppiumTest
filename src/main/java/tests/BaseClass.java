@@ -3,8 +3,8 @@ package tests;
 import com.AndroidDriverWithCalculator;
 import com.codeborne.selenide.Configuration;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
 
@@ -15,10 +15,10 @@ public class BaseClass {
 
     private AppiumDriverLocalService service = AppiumDriverLocalService.buildDefaultService();
 
-    @BeforeTest
+    @BeforeSuite
     public void setUp() {
 
-        String myShellScript = "/home/DN060191MDO/Android/Sdk/tools/emulator -avd Nexus_S_API_26";
+        String myShellScript = System.getenv("ANDROID_HOME") + "/tools/emulator -avd Nexus_S_API_26";
 
         try {
             Runtime.getRuntime().exec(myShellScript);
@@ -34,8 +34,14 @@ public class BaseClass {
         open();
     }
 
-    @AfterTest
+    @AfterSuite
     public void tearDown() {
+
+        try {
+            Runtime.getRuntime().exec("adb -s emulator-5554 emu kill");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         close();
         service.stop();
     }
