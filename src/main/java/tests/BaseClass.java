@@ -19,7 +19,7 @@ public class BaseClass {
     public void setUp() {
 
 //        String myShellScript = System.getenv("ANDROID_HOME") + "/tools/emulator -avd Nexus_S_API_26";
-        String myShellScript = "/home/victor/Android/Sdk/tools/emulator -avd Nexus_S_API_26";
+        String myShellScript = System.getenv("ANDROID_HOME") + "/tools/emulator -avd Pixel_API_26";
 
         try {
             Runtime.getRuntime().exec(myShellScript);
