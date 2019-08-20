@@ -22,13 +22,13 @@ public class AndroidDriverWithCalculator implements WebDriverProvider {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.0");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus S");
         capabilities.setCapability("autoGrantPermissions", true);
-        capabilities.setCapability("appPackage", "ua.privatbank.tourist");
-        capabilities.setCapability("appActivity", "ua.privatbank.tourist.ui.authorization.Authorization");
+//        capabilities.setCapability("appPackage", "ua.privatbank.tourist");
+//        capabilities.setCapability("appActivity", "ua.privatbank.tourist.ui.authorization.Authorization");
 //        capabilities.setCapability("appActivity", "ua.privatbank.tourist.ui.tour.TourActivity");
         capabilities.setCapability("unicodeKeyboard", true);
 
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator1");
-//        capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+        capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
 //        capabilities.setCapability(MobileCapabilityType.LANGUAGE, "ru");
 //        capabilities.setCapability(MobileCapabilityType.LOCALE, "UA");
 
