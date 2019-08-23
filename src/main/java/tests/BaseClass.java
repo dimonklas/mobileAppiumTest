@@ -23,6 +23,7 @@ public class BaseClass {
 
         try {
             Runtime.getRuntime().exec(myShellScript);
+            System.out.println("exec bash-scrip------" + myShellScript);
         } catch (IOException e) {
             e.printStackTrace();
         }
